@@ -1,14 +1,21 @@
 # json-parse
 
-A Clojure library designed to ... well, that part is up to you.
+Convert XML to JSON in Clojure
 
 ## Usage
 
-FIXME
+First we need to parse the XML with this function:
 
-## License
+```clojure
+    (defn parse [s] (clojure.xml/parse (java.io.ByteArrayInputStream. (.getBytes s))))
+```
 
-Copyright © 2016 FIXME
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Then we just use the `xml->json`:
+
+```clojure
+    (def parsed-xml (parse "<person><name>Salvatore</name><address>Parlermo</address></person>"))
+    (def json (xml->json parsed-xml)
+```
+    
+
